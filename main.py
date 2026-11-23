@@ -21,11 +21,14 @@ DESTINATION = Path("/output/entry.txt")
 
 # Z for "zombie": the day after a night with zero sleep.
 LETTER = "Z"
+WORD_BEHIND_IT = "zombie"
 
 
 def main():
     if len(LETTER) != 1 or LETTER not in string.ascii_uppercase:
         raise SystemExit("entry must be exactly one letter, A to Z")
+    if LETTER != WORD_BEHIND_IT[0].upper():
+        raise SystemExit("the letter must be the hidden word's initial")
     DESTINATION.parent.mkdir(parents=True, exist_ok=True)
     DESTINATION.write_text(LETTER, encoding="utf-8")
 
